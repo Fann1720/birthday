@@ -32,30 +32,9 @@
       background: var(--cream);
       color: var(--pink-dark);
       overflow-x: hidden;
-      cursor: none;
     }
 
-    /* ---- CUSTOM CURSOR ---- */
-    .cursor {
-      width: 12px; height: 12px;
-      background: var(--pink-main);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease, opacity 0.2s;
-      transform: translate(-50%, -50%);
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--pink-mid);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: all 0.08s linear;
-    }
+
 
     /* ---- PETAL RAIN ---- */
     .petals-wrap {
@@ -571,9 +550,7 @@
 </head>
 <body>
 
-  <!-- CURSOR EFFECT -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+
 
   <!-- PETAL RAIN -->
   <div class="petals-wrap" id="petalsWrap"></div>
@@ -953,19 +930,19 @@
     // --- Confetti ---
     function buangConfetti() {
       const colors = ['#ec4899','#f472b6','#fbcfe8','#fbbf24','#a78bfa','#34d399','#fb923c'];
-      for (let i = 0; i < 90; i++) {
+      for (let i = 0; i < 150; i++) {
         const c = document.createElement('div');
         c.className = 'confetti-dot';
-        c.style.left   = (5 + Math.random() * 90) + '%';
-        c.style.top    = '15%';
+        c.style.left   = (0 + Math.random() * 100) + '%';
+        c.style.top    = (0 + Math.random() * 30) + '%';
         c.style.background    = colors[Math.floor(Math.random() * colors.length)];
-        c.style.animationDelay    = (Math.random() * 0.6) + 's';
-        c.style.animationDuration = (2 + Math.random() * 1.5) + 's';
-        c.style.width  = (6 + Math.random() * 8) + 'px';
-        c.style.height = (6 + Math.random() * 8) + 'px';
+        c.style.animationDelay    = (Math.random() * 0.8) + 's';
+        c.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+        c.style.width  = (6 + Math.random() * 10) + 'px';
+        c.style.height = (6 + Math.random() * 10) + 'px';
         c.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
         document.body.appendChild(c);
-        setTimeout(() => c.remove(), 4000);
+        setTimeout(() => c.remove(), 5000);
       }
     }
 
