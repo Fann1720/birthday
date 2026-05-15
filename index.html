@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday, Sayang 🌸</title>
+  <title>Happy Birthday, Sayangku</title>
   <!-- Favicon (ikon di tab browser) -->
   <link rel="icon" type="image/png" href="favicon.jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -66,7 +66,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 28px 80px;
+      padding: 40px 20px 60px;
       text-align: center;
     }
 
@@ -76,6 +76,8 @@
     ============================================ */
     #hero {
       background: linear-gradient(170deg, #ffe4f0 0%, #fce7f3 50%, #fdf2f8 100%);
+      padding-top: 20px;
+      min-height: 90vh;
     }
 
     .badge {
@@ -542,6 +544,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 480px) {
+      section { padding: 30px 16px 50px; }
       .photo-grid { gap: 10px; }
       .letter-wrap { padding: 32px 22px; }
       .nav-dots { display: none; }
@@ -863,18 +866,6 @@
 
     // --- Song title ---
     document.getElementById('songTitle').textContent = SONG_NAME;
-
-    // --- Cursor ---
-    const cur = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    document.addEventListener('mousemove', e => {
-      cur.style.left  = e.clientX + 'px';
-      cur.style.top   = e.clientY + 'px';
-      setTimeout(() => {
-        ring.style.left = e.clientX + 'px';
-        ring.style.top  = e.clientY + 'px';
-      }, 60);
-    });
 
     // --- Petal rain ---
     const petalsWrap = document.getElementById('petalsWrap');
