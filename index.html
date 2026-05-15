@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday, Sayang 🌸</title>
+  <!-- Favicon (ikon di tab browser) -->
+  <link rel="icon" type="image/png" href="favicon.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* ============================================
+       KAMU BISA EDIT BAGIAN INI:
+       - Ganti warna di :root jika mau tema berbeda
+       - Ganti font jika mau font lain
+    ============================================ */
+    :root {
+      --pink-light:  #fce7f3;
+      --pink-mid:    #f9a8d4;
+      --pink-main:   #ec4899;
+      --pink-deep:   #be185d;
+      --pink-dark:   #9d174d;
+      --cream:       #fff5f9;
+      --white:       #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--pink-dark);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ---- CUSTOM CURSOR ---- */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--pink-main);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, opacity 0.2s;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--pink-mid);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.08s linear;
+    }
+
+    /* ---- PETAL RAIN ---- */
+    .petals-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -40px;
+      border-radius: 50% 0 50% 0;
+      opacity: 0.6;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); }
+      50%  { transform: translateY(50vh) rotate(180deg) translateX(20px); }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
+    }
+
+    /* ---- SECTIONS ---- */
+    section {
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px 80px;
+      text-align: center;
+    }
+
+    /* ============================================
+       SECTION 1 — HERO
+       Edit: nama, kata-kata pembuka
+    ============================================ */
+    #hero {
+      background: linear-gradient(170deg, #ffe4f0 0%, #fce7f3 50%, #fdf2f8 100%);
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      border: 1px solid var(--pink-mid);
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeSlideUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 10vw, 72px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--pink-dark);
+      animation: fadeSlideUp 0.9s 0.1s ease both;
+      margin-bottom: 16px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--pink-main);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--pink-deep);
+      line-height: 1.9;
+      max-width: 360px;
+      animation: fadeSlideUp 1s 0.2s ease both;
+      margin-bottom: 40px;
+    }
+
+    .hero-heart {
+      font-size: 64px;
+      display: block;
+      animation: heartbeat 1.4s ease-in-out infinite, fadeSlideUp 0.8s ease both;
+      margin-bottom: 20px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      opacity: 0.6;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ============================================
+       SECTION 2 — GALERI FOTO
+       Edit: ganti URL foto, ganti caption
+    ============================================ */
+    #galeri {
+      background: var(--white);
+      padding-top: 80px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 7vw, 48px);
+      font-weight: 600;
+      color: var(--pink-dark);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    .photo-item {
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(236,72,153,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .photo-item:hover {
+      transform: scale(1.03) rotate(-1deg);
+      box-shadow: 0 12px 36px rgba(236,72,153,0.28);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Jika belum ada foto, tampilin placeholder */
+    .photo-item .placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--pink-light), #fdf2f8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      gap: 8px;
+    }
+    .photo-item .placeholder span {
+      font-size: 11px;
+      color: var(--pink-deep);
+      font-style: italic;
+    }
+
+    .photo-caption-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(157,23,77,0.7));
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 20px 12px 12px;
+      text-align: left;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-item:hover .photo-caption-overlay { opacity: 1; }
+
+    /* ============================================
+       SECTION 3 — SURAT CINTA
+       Edit: nama, isi pesan, tanda tangan
+    ============================================ */
+    #pesan {
+      background: linear-gradient(160deg, #fce7f3, #fff0f6, #fdf2f8);
+    }
+
+    .letter-wrap {
+      background: white;
+      border: 1px solid var(--pink-mid);
+      border-radius: 28px;
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(236,72,153,0.12);
+      text-align: left;
+    }
+
+    .letter-wrap::before {
+      content: '✦';
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 0 12px;
+      font-size: 18px;
+      color: var(--pink-main);
+    }
+
+    .letter-date {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-mid);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .letter-body {
+      font-size: 15px;
+      line-height: 2;
+      color: var(--pink-dark);
+      font-weight: 300;
+    }
+
+    .letter-body strong {
+      font-weight: 500;
+      color: var(--pink-main);
+    }
+
+    .letter-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--pink-main);
+      margin-top: 24px;
+      text-align: right;
+      display: block;
+    }
+
+    /* ============================================
+       SECTION 4 — ALASAN AKU SUKA KAMU
+       Edit: isi list sesuai yang kamu rasain
+    ============================================ */
+    #alasan {
+      background: var(--white);
+    }
+
+    .reason-list {
+      list-style: none;
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reason-item {
+      background: var(--pink-light);
+      border-radius: 18px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-align: left;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .reason-item:hover {
+      transform: translateX(6px);
+      box-shadow: -4px 0 0 var(--pink-main);
+    }
+
+    .reason-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--pink-mid);
+      line-height: 1;
+      min-width: 28px;
+    }
+
+    .reason-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--pink-dark);
+      font-weight: 300;
+    }
+
+    .reason-text strong {
+      font-weight: 500;
+      color: var(--pink-main);
+    }
+
+    /* ============================================
+       SECTION 5 — COUNTDOWN & CONFETTI
+       Edit: ganti tanggal ulang tahun di JS
+    ============================================ */
+    #countdown {
+      background: linear-gradient(160deg, #ffe4f0, #fce7f3);
+    }
+
+    .count-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 340px;
+      width: 100%;
+      margin: 28px auto;
+    }
+
+    .count-box {
+      background: white;
+      border-radius: 22px;
+      padding: 24px 12px;
+      border: 1px solid var(--pink-mid);
+      box-shadow: 0 4px 20px rgba(236,72,153,0.1);
+    }
+
+    .count-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 600;
+      color: var(--pink-main);
+      line-height: 1;
+      display: block;
+    }
+
+    .count-lbl {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink-deep);
+      margin-top: 6px;
+      display: block;
+    }
+
+    .celebrate-btn {
+      background: linear-gradient(135deg, var(--pink-main), var(--pink-mid));
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(236,72,153,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+    .celebrate-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(236,72,153,0.5);
+    }
+
+    /* ============================================
+       SECTION 6 — PENUTUP
+       Edit: kata-kata penutup & tanda tangan
+    ============================================ */
+    #penutup {
+      background: var(--pink-dark);
+      color: white;
+      min-height: 60vh;
+    }
+
+    #penutup .hero-title {
+      color: var(--pink-light);
+    }
+
+    #penutup .hero-title em {
+      color: var(--pink-mid);
+    }
+
+    #penutup .hero-sub {
+      color: var(--pink-mid);
+    }
+
+    .footer-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--pink-mid);
+      margin-top: 24px;
+    }
+
+    /* ---- STICKY NAV DOTS ---- */
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--pink-mid);
+      opacity: 0.4;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+    }
+    .nav-dot.active {
+      opacity: 1;
+      background: var(--pink-main);
+      transform: scale(1.4);
+    }
+
+    /* ---- CONFETTI ---- */
+    .confetti-dot {
+      position: fixed;
+      width: 9px; height: 9px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 9997;
+      animation: confettiFly 2.8s ease-out forwards;
+    }
+    @keyframes confettiFly {
+      0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(800deg); opacity: 0; }
+    }
+
+    /* ---- UTILITIES ---- */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- MUSIK PLAYER ---- */
+    .music-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 1px solid var(--pink-mid);
+      border-radius: 50px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 200;
+      box-shadow: 0 4px 20px rgba(236,72,153,0.2);
+      font-size: 13px;
+      color: var(--pink-deep);
+      font-weight: 500;
+    }
+
+    .music-btn {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--pink-main);
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .music-btn:hover { transform: scale(1.1); }
+
+    .music-disc {
+      font-size: 18px;
+      animation: spin 4s linear infinite paused;
+    }
+    .music-disc.playing { animation-play-state: running; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 480px) {
+      .photo-grid { gap: 10px; }
+      .letter-wrap { padding: 32px 22px; }
+      .nav-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR EFFECT -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- PETAL RAIN -->
+  <div class="petals-wrap" id="petalsWrap"></div>
+
+  <!-- NAV DOTS -->
+  <nav class="nav-dots" id="navDots" aria-label="Navigasi section"></nav>
+
+  <!-- MUSIK PLAYER -->
+  <!-- 
+    CARA GANTI LAGU:
+    1. Upload file .mp3 ke folder yang sama dengan index.html
+    2. Ganti "lagu.mp3" di bawah dengan nama file kamu
+    3. Atau pakai URL langsung dari internet
+  -->
+  <audio id="bgMusic" loop>
+    <source src="Laufey - Valentine.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <div class="music-bar">
+    <span class="music-disc" id="musicDisc">🌸</span>
+    <!--
+      EDIT: Ganti nama lagu di sini
+    -->
+    <span id="songTitle">Laufey - Valentine</span>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Play/Pause musik">▶</button>
+  </div>
+
+
+  <!-- ============================================
+       SECTION 1 — HERO
+       EDIT: Ganti nama & kata pembuka di sini
+  ============================================ -->
+  <section id="hero">
+    <span class="hero-heart">🌸</span>
+    <div class="badge">Happy Birthday</div>
+    <h1 class="hero-title">
+      For My Love,<br>
+      <em>
+        <!-- EDIT: Ganti dengan nama pacarmu -->
+        Ayyinꨄ︎
+      </em>
+    </h1>
+    <p class="hero-sub">
+      <!-- EDIT: Ganti kata pembuka ini sesukamu -->
+      Hari ini adalah harimu — <em>the day you were born</em>,
+      dan aku sangat bersyukur kamu ada di sini.
+    </p>
+    <p class="scroll-hint">Scroll ke bawah ↓</p>
+  </section>
+
+
+  <!-- ============================================
+       SECTION 2 — GALERI FOTO
+       EDIT: Ganti src="" dengan path foto kamu
+       Contoh: src="foto1.jpg" (taruh di folder yang sama)
+       Ganti juga caption-nya
+  ============================================ -->
+  <section id="galeri">
+    <p class="section-label reveal">Our Memories</p>
+    <h2 class="section-title reveal">Momen Yang <em style="font-family:'Cormorant Garamond',serif;font-style:italic;">Selalu Aku Ingat</em></h2>
+
+    <div class="photo-grid reveal">
+
+      <!-- FOTO 1 -->
+      <div class="photo-item">
+        <!-- EDIT: Ganti src dengan foto kamu, atau hapus tag img dan pakai placeholder di bawah -->
+        <img src="foto1.jpeg" alt="Foto 1"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="placeholder" style="display:none">
+          📷 <span>foto1.jpg</span>
+        </div>
+        <div class="photo-caption-overlay">
+          <!-- EDIT: Caption foto 1 -->
+          (˶˃ ᵕ ˂˶)
+        </div>
+      </div>
+
+      <!-- FOTO 2 -->
+      <div class="photo-item">
+        <img src="foto2.jpeg" alt="Foto 2"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="placeholder" style="display:none">
+          📷 <span>foto2.jpg</span>
+        </div>
+        <div class="photo-caption-overlay">
+          <!-- EDIT: Caption foto 2 -->
+          (˶ᵔ ᵕ ᵔ˶)
+        </div>
+      </div>
+
+      <!-- FOTO 3 -->
+      <div class="photo-item">
+        <img src="foto3.jpeg" alt="Foto 3"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="placeholder" style="display:none">
+          📷 <span>foto3.jpg</span>
+        </div>
+        <div class="photo-caption-overlay">
+          <!-- EDIT: Caption foto 3 -->
+          ( ˘͈ ᵕ ˘͈♡)
+        </div>
+      </div>
+
+      <!-- FOTO 4 -->
+      <div class="photo-item">
+        <img src="foto4.jpeg" alt="Foto 4"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="placeholder" style="display:none">
+          📷 <span>foto4.jpg</span>
+        </div>
+        <div class="photo-caption-overlay">
+          <!-- EDIT: Caption foto 4 -->
+          (˶  >   ₃  < ˶)
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kata-kata tambahan di bawah galeri -->
+    <p class="gallery-note reveal" style="font-size: 12px; color: var(--pink-deep); opacity: 0.7; margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+      setiap foto kamu mengingatkanku betapa beruntungnya aku punya kamu sayang..
+    </p>
+    <!--
+      TAMBAH FOTO: Copy salah satu blok di atas dan paste di dalam .photo-grid
+      Ganti nama file dan caption-nya
+    -->
+  </section>
+
+
+  <!-- ============================================
+       SECTION 3 — SURAT CINTA
+       EDIT: Ganti semua teks di dalam .letter-body
+       dan tanda tangan di .letter-sig
+  ============================================ -->
+  <section id="pesan">
+    <p class="section-label reveal">From My Heart</p>
+    <h2 class="section-title reveal">A Little Letter <em style="font-family:'Cormorant Garamond',serif;font-style:italic;">For You</em></h2>
+
+    <div class="letter-wrap reveal">
+      <!--
+        EDIT: Ganti tanggal di bawah ini
+        Format: Hari, Tanggal Bulan Tahun
+      -->
+      <span class="letter-date">Bogor, 16-April-2026</span>
+
+      <div class="letter-body">
+        <!--
+          EDIT: Tulis pesan cintamu di sini!
+          Kamu bisa pakai <strong>teks</strong> untuk huruf yang berwarna pink
+          Kamu bisa pakai <em>teks</em> untuk italic
+          Tekan Enter untuk baris baru, atau gunakan <br> untuk pindah baris
+        -->
+        <p>
+          Dear <strong>Adik Kecil</strong>,<br><br>
+
+          Tida terasa yaa sayanggg tiba tiba uda ultah aja..
+          Adik kecil ini suda bukan adik lagi. Aku hanya bisa kasi inii hehe.<br><br>
+
+          Di hari yang spesial ini, aku cuma mau bilang —
+          <strong>you mean the whole world to me.</strong>
+          Sayang bukan cuma ceweku, tapi sayang adalah alasan aku
+          selalu tersenyum, bahkan di hari yang paling biasa sekalipunn.<br><br>
+
+          Semoga tahun ini penuh kebahagiaan, kesehatan, dan semua yang kamu
+          impikan. <em>Because you truly deserve it all.</em><br><br>
+
+          I love you more than i can say.<br><br>
+        </p>
+        <!--
+          EDIT: Ganti nama kamu di sini
+        -->
+        <span class="letter-sig">— lil bby :p</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================
+       SECTION 4 — ALASAN AKU SUKA KAMU
+       EDIT: Ganti setiap <li> dengan alasanmu sendiri
+       Tambah atau kurangi <li> sesuai mau kamu
+  ============================================ -->
+  <section id="alasan">
+    <p class="section-label reveal">Why I Love You</p>
+    <h2 class="section-title reveal"><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">Alasan</em> Aku Sayang Kamu</h2>
+
+    <ul class="reason-list reveal">
+
+      <li class="reason-item">
+        <span class="reason-num">01</span>
+        <p class="reason-text">
+          <!-- EDIT: Alasan pertama -->
+          Senyum sayang bisa bikin hari yang berat jadi terasa ringan.
+          <strong>Your smile is my favorite thing.</strong>
+        </p>
+      </li>
+
+      <li class="reason-item">
+        <span class="reason-num">02</span>
+        <p class="reason-text">
+          <!-- EDIT: Alasan kedua -->
+          Sayang selalu ada, bahkan di saat aku tida minta.
+          <strong>You know when I need you.</strong>
+        </p>
+      </li>
+
+      <li class="reason-item">
+        <span class="reason-num">03</span>
+        <p class="reason-text">
+          <!-- EDIT: Alasan ketiga -->
+          Sayang bikin aku jadi versi yang lebih baik dari diriku sendiri.
+          <strong>You make me want to be better.</strong>
+        </p>
+      </li>
+
+      <li class="reason-item">
+        <span class="reason-num">04</span>
+        <p class="reason-text">
+          <!-- EDIT: Alasan keempat -->
+          Tertawa bersama sayang adalah hal paling menyenangkan di dunia ini.
+          <strong>Laughing with you = best feeling ever.</strong>
+        </p>
+      </li>
+
+      <li class="reason-item">
+        <span class="reason-num">05</span>
+        <p class="reason-text">
+          <!-- EDIT: Alasan kelima -->
+          Simply because kamu adalah kamu — dan aku tida mau yang lain.
+          <strong>You are irreplaceable.</strong>
+        </p>
+      </li>
+
+      <!--
+        TAMBAH ALASAN: Copy blok <li>...</li> di atas dan paste di sini
+        Ganti nomornya (06, 07, dst) dan isinya
+      -->
+
+    </ul>
+  </section>
+
+
+  <!-- ============================================
+       SECTION 5 — COUNTDOWN
+       EDIT: Ganti tanggal di JS bagian bawah
+  ============================================ -->
+  <section id="countdown">
+    <p class="section-label reveal">Hari Spesial</p>
+    <h2 class="section-title reveal">YEAYYY⸜(｡˃ ᵕ ˂ )⸝♡</h2>
+
+    <div class="date-display reveal" style="background: white; border-radius: 22px; padding: 32px 24px; border: 1px solid var(--pink-mid); box-shadow: 0 4px 20px rgba(236,72,153,0.1); max-width: 340px; width: 100%; margin: 28px auto;">
+      <span class="count-num" id="bdayDate" style="font-size: 42px;">16 April 2026</span>
+    </div>
+
+    <p class="hero-sub reveal">
+      <!-- EDIT: Kata-kata di bawah countdown -->
+      Hari yg ditunggu tunggu akhirnya tibaa yaa sayanggg
+      selamat ulang tahun yaaa cintaa. <em>u deserve better.</em>
+    </p>
+
+    <button class="celebrate-btn" onclick="buangConfetti()">
+      PENCETT ENIHH
+    </button>
+  </section>
+
+
+  <!-- ============================================
+       SECTION 6 — PENUTUP
+       EDIT: Kata-kata penutup
+  ============================================ -->
+  <section id="penutup">
+    <div class="hero-heart">❤︎</div>
+    <h2 class="hero-title">
+      Happy Birthday<br>
+      <em>
+        <!-- EDIT: Nama pacarmu lagi -->
+        Sayang
+      </em>
+    </h2>
+    <p class="hero-sub">
+      <!-- EDIT: Kalimat penutup -->
+      Thank you for existing. Thank you for being mine.
+      Aku sayangg kamu, kemarin, hari ini, dan selalu<3
+    </p>
+    <!--
+      EDIT: Tanda tangan kamu
+    -->
+    <p class="footer-sig">— lil bby, ailafyuu</p>
+  </section>
+
+
+  <script>
+    // ============================================
+    //  SETTING UTAMA — EDIT DI SINI
+    // ============================================
+
+    // EDIT: Ganti dengan tanggal ulang tahun pacarmu
+    // Format: bulan (0=Jan,1=Feb,...,11=Des), tanggal
+    // Contoh: 14 Februari = new Date(tahun, 1, 14)
+    const BDAY_MONTH = 3;    // 0 = Januari, 3 = April, dst
+    const BDAY_DAY   = 16;   // Tanggal
+
+    // EDIT: Nama lagu yang tampil di player
+    const SONG_NAME = "Laufey - Valentine";
+
+    // ============================================
+    //  JANGAN EDIT DI BAWAH INI
+    //  (kecuali kamu mau kustomisasi lebih lanjut)
+    // ============================================
+
+    // --- Song title ---
+    document.getElementById('songTitle').textContent = SONG_NAME;
+
+    // --- Cursor ---
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cur.style.left  = e.clientX + 'px';
+      cur.style.top   = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top  = e.clientY + 'px';
+      }, 60);
+    });
+
+    // --- Petal rain ---
+    const petalsWrap = document.getElementById('petalsWrap');
+    const petalColors = ['#f9a8d4','#f472b6','#fbcfe8','#fce7f3','#ec4899'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width  = (8 + Math.random() * 12) + 'px';
+      p.style.height = (10 + Math.random() * 14) + 'px';
+      p.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+      p.style.animationDuration  = (5 + Math.random() * 7) + 's';
+      p.style.animationDelay     = (Math.random() * 10) + 's';
+      petalsWrap.appendChild(p);
+    }
+
+    // --- Nav dots ---
+    const sections = ['hero','galeri','pesan','alasan','countdown','penutup'];
+    const navDots   = document.getElementById('navDots');
+    sections.forEach((id, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', 'Pergi ke section ' + (i+1));
+      btn.addEventListener('click', () => document.getElementById(id).scrollIntoView({ behavior: 'smooth' }));
+      navDots.appendChild(btn);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = sections.indexOf(entry.target.id);
+          document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(id => observer.observe(document.getElementById(id)));
+
+    // --- Reveal on scroll ---
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // --- Display Birthday Date ---
+    function displayBirthdayDate() {
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      const year = 2026; // Ganti tahun sesuai keinginan
+      const dateStr = `${BDAY_DAY} ${months[BDAY_MONTH]} ${year}`;
+      document.getElementById('bdayDate').textContent = dateStr;
+    }
+    displayBirthdayDate();
+
+    // --- Confetti ---
+    function buangConfetti() {
+      const colors = ['#ec4899','#f472b6','#fbcfe8','#fbbf24','#a78bfa','#34d399','#fb923c'];
+      for (let i = 0; i < 90; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti-dot';
+        c.style.left   = (5 + Math.random() * 90) + '%';
+        c.style.top    = '15%';
+        c.style.background    = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay    = (Math.random() * 0.6) + 's';
+        c.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+        c.style.width  = (6 + Math.random() * 8) + 'px';
+        c.style.height = (6 + Math.random() * 8) + 'px';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 4000);
+      }
+    }
+
+    // --- Musik ---
+    const audio    = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const disc     = document.getElementById('musicDisc');
+    let   playing  = false;
+
+    function toggleMusic() {
+      if (playing) {
+        audio.pause();
+        musicBtn.textContent = '▶';
+        disc.classList.remove('playing');
+      } else {
+        audio.play().catch(() => {});
+        musicBtn.textContent = '⏸';
+        disc.classList.add('playing');
+      }
+      playing = !playing;
+    }
+  </script>
+</body>
+</html>
